@@ -1,0 +1,22 @@
+{
+  "name": "cookbook-api",
+  "version": "1.0.0",
+  "description": "API for CookBook app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yotam7298/CookBook-API.git"
+  },
+  "author": "Yotam Yakov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yotam7298/CookBook-API/issues"
+  },
+  "homepage": "https://github.com/Yotam7298/CookBook-API#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
