@@ -48,7 +48,7 @@ module.exports.addRecipe = (req, res, next) => {
     .catch(next);
 };
 
-module.exports.deleteRecipe = (req, res, next) => {
+module.exports.removeRecipe = (req, res, next) => {
   Recipe.findById(req.params.recipeId)
     .select('+owner')
     .then((recipe) => {
