@@ -6,7 +6,10 @@ const recipeSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  recipeId: String,
+  recipeId: {
+    type: Number,
+    required: true,
+  },
   image: {
     type: String,
     required: true,
@@ -23,12 +26,30 @@ const recipeSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  dairyFree: Boolean,
-  glutenFree: Boolean,
-  vegan: Boolean,
-  vegetarian: Boolean,
-  ingredients: [String],
-  instructions: [String],
+  dairyFree: {
+    type: Boolean,
+    required: true,
+  },
+  glutenFree: {
+    type: Boolean,
+    required: true,
+  },
+  vegan: {
+    type: Boolean,
+    required: true,
+  },
+  vegetarian: {
+    type: Boolean,
+    required: true,
+  },
+  ingredients: {
+    type: [Object],
+    required: true,
+  },
+  instructions: {
+    type: [String],
+    required: true,
+  },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user',
