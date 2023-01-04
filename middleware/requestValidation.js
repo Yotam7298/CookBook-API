@@ -27,9 +27,9 @@ module.exports.validateSignIn = celebrate({
 module.exports.validateAddRecipe = celebrate({
   body: Joi.object().keys({
     title: Joi.string().required(),
-    recipeId: Joi.integer(),
+    recipeId: Joi.number().integer(),
     image: Joi.string().custom(validateURL),
-    time: Joi.integer().required(),
+    time: Joi.number().integer().required(),
     source: Joi.string().required(),
     dairyFree: Joi.bool(),
     glutenFree: Joi.bool(),

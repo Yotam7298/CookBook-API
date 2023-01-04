@@ -52,7 +52,7 @@ module.exports.removeRecipe = (req, res, next) => {
       if (recipe.owner.toString() !== req.user._id) {
         return Promise.reject(new UnauthorizedError(notAuthorized));
       }
-      Article.findByIdAndRemove(req.params.recipeId)
+      Recipe.findByIdAndRemove(req.params.recipeId)
         .then(() => res.send({ message: recipeRemoved }))
         .catch(next);
     })

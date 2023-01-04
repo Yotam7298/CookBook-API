@@ -11,7 +11,7 @@ const {
 } = require('../controllers/recipes');
 
 router.get('/', getRecipes);
-router.post('/', addRecipe);
-router.delete('/:recipeId', removeRecipe);
+router.post('/', validateAddRecipe, addRecipe);
+router.delete('/:recipeId', validateRemoveRecipe, removeRecipe);
 
 module.exports = router;
