@@ -4,15 +4,12 @@ const validator = require('validator');
 const recipeSchema = mongoose.Schema({
   title: {
     type: String,
+    minLength: 2,
     required: true,
   },
-  recipeId: {
-    type: Number,
-    required: true,
-  },
+  recipeId: Number,
   image: {
     type: String,
-    required: true,
     validate: {
       validator: (v) => validator.isURL(v),
       message: 'Please provide a URL',
@@ -26,22 +23,10 @@ const recipeSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  dairyFree: {
-    type: Boolean,
-    required: true,
-  },
-  glutenFree: {
-    type: Boolean,
-    required: true,
-  },
-  vegan: {
-    type: Boolean,
-    required: true,
-  },
-  vegetarian: {
-    type: Boolean,
-    required: true,
-  },
+  dairyFree: Boolean,
+  glutenFree: Boolean,
+  vegan: Boolean,
+  vegetarian: Boolean,
   ingredients: {
     type: [Object],
     required: true,

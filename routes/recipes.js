@@ -1,4 +1,8 @@
 const router = require('express').Router();
+const {
+  validateAddRecipe,
+  validateRemoveRecipe,
+} = require('../middleware/requestValidation');
 
 const {
   getRecipes,

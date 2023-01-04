@@ -1,10 +1,6 @@
 const Recipe = require('../models/recipe');
 const { NotFoundError, UnauthorizedError } = require('../errors/errors');
-const {
-  articleNotFound,
-  notAuthorized,
-  recipeRemoved,
-} = require('../messages');
+const { recipeNotFound, notAuthorized, recipeRemoved } = require('../messages');
 
 module.exports.getRecipes = (req, res, next) => {
   const owner = req.user._id;
@@ -17,7 +13,6 @@ module.exports.getRecipes = (req, res, next) => {
 module.exports.addRecipe = (req, res, next) => {
   const {
     title,
-    recipeId,
     image,
     time,
     source,
@@ -32,7 +27,6 @@ module.exports.addRecipe = (req, res, next) => {
 
   Recipe.create({
     title,
-    recipeId,
     image,
     time,
     source,
@@ -53,7 +47,7 @@ module.exports.removeRecipe = (req, res, next) => {
     .select('+owner')
     .then((recipe) => {
       if (!recipe) {
-        return Promise.reject(new NotFoundError(articleNotFound));
+        return Promise.reject(new NotFoundError(recipeNotFound));
       }
       if (recipe.owner.toString() !== req.user._id) {
         return Promise.reject(new UnauthorizedError(notAuthorized));
