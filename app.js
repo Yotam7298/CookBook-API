@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const helmet = require('helmet');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const { errors } = require('celebrate');
 // Config
 const config = require('./config');
 // Router
@@ -37,6 +38,7 @@ app.use(requestLogger);
 app.use('/', indexRouter);
 app.use('*', pathNonExistent);
 app.use(errorLogger);
+app.use(errors());
 app.use(errorHandler);
 
 app.listen(PORT, () => {

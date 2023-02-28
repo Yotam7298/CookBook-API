@@ -13,9 +13,11 @@ module.exports.getRecipes = (req, res, next) => {
 module.exports.addRecipe = (req, res, next) => {
   const {
     title,
+    recipeId,
     image,
     time,
     source,
+    servings,
     dairyFree,
     glutenFree,
     vegan,
@@ -27,9 +29,11 @@ module.exports.addRecipe = (req, res, next) => {
 
   Recipe.create({
     title,
+    recipeId,
     image,
     time,
     source,
+    servings,
     dairyFree,
     glutenFree,
     vegan,

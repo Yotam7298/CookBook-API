@@ -16,13 +16,14 @@ const recipeSchema = mongoose.Schema({
     },
   },
   time: {
-    type: Number,
+    type: String,
     required: true,
   },
   source: {
     type: String,
     required: true,
   },
+  servings: Number,
   dairyFree: Boolean,
   glutenFree: Boolean,
   vegan: Boolean,
