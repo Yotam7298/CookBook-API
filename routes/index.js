@@ -12,5 +12,8 @@ router.use('/users', auth, usersRouter);
 router.use('/recipes', auth, recipesRouter);
 router.post('/signup', validateSignUp, signUp);
 router.post('/signin', validateSignIn, signIn);
+router.get('/', (req, res) => {
+  res.send({ message: 'Express API is running' });
+});
 
 module.exports = router;

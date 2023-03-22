@@ -28,6 +28,7 @@ const {
 mongoose.connect(MONGO_URL);
 mongoose.set('strictQuery', false);
 
+app.use(express.static('public'));
 app.use(helmet());
 app.use(rateLimiter);
 app.use(cors());
