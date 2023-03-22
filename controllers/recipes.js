@@ -47,7 +47,7 @@ module.exports.addRecipe = (req, res, next) => {
 };
 
 module.exports.removeRecipe = (req, res, next) => {
-  Recipe.findById(req.params.recipeId)
+  Recipe.findOne({ recipeId: req.params.recipeId })
     .select('+owner')
     .then((recipe) => {
       if (!recipe) {
@@ -56,7 +56,7 @@ module.exports.removeRecipe = (req, res, next) => {
       if (recipe.owner.toString() !== req.user._id) {
         return Promise.reject(new UnauthorizedError(notAuthorized));
       }
-      Recipe.findByIdAndRemove(req.params.recipeId)
+      Recipe.findOneAndRemove({ recipeId: req.params.recipeId })
         .then(() => res.send({ message: recipeRemoved }))
         .catch(next);
     })
