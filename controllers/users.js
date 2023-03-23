@@ -50,7 +50,7 @@ module.exports.signIn = (req, res, next) => {
           }
 
           const { NODE_ENV, JWT_SECRET } = process.env;
-          res.send(NODE_ENV, JWT_SECRET);
+          res.send({ NODE_ENV, JWT_SECRET });
           const token = jwt.sign(
             { _id: user._id.toString() },
             NODE_ENV === 'production' ? JWT_SECRET : config.jwtKey,
