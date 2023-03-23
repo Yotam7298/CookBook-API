@@ -22,7 +22,7 @@ const app = express();
 const {
   PORT = config.port,
   NODE_ENV = config.enviroment,
-  MONGO_URL = config.mongoUrl,
+  MONGODB_URI = config.mongodbUri,
 } = process.env;
 
 mongoose.connect(MONGO_URL);
