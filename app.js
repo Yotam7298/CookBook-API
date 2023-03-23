@@ -25,7 +25,7 @@ const {
   MONGODB_URI = config.mongodbUri,
 } = process.env;
 
-mongoose.connect(MONGO_URL);
+mongoose.connect(MONGODB_URI);
 mongoose.set('strictQuery', false);
 
 app.use(express.static('public'));
