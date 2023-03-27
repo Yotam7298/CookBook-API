@@ -2,10 +2,18 @@ const Recipe = require('../models/recipe');
 const { NotFoundError, UnauthorizedError } = require('../errors/errors');
 const { recipeNotFound, notAuthorized, recipeRemoved } = require('../messages');
 
-module.exports.getRecipes = (req, res, next) => {
+module.exports.getSavedRecipes = (req, res, next) => {
   const owner = req.user._id;
 
-  Recipe.find({ owner })
+  Recipe.find({ owner, recipeId: { $gt: 0 } })
+    .then((recipes) => res.send(recipes))
+    .catch(next);
+};
+
+module.exports.getMyRecipes = (req, res, next) => {
+  const owner = req.user._id;
+
+  Recipe.find({ owner, source: 'myRecipe' })
     .then((recipes) => res.send(recipes))
     .catch(next);
 };

@@ -5,12 +5,14 @@ const {
 } = require('../middleware/requestValidation');
 
 const {
-  getRecipes,
+  getSavedRecipes,
+  getMyRecipes,
   addRecipe,
   removeRecipe,
 } = require('../controllers/recipes');
 
-router.get('/', getRecipes);
+router.get('/saved', getSavedRecipes);
+router.get('/my', getMyRecipes);
 router.post('/', validateAddRecipe, addRecipe);
 router.delete('/:recipeId', validateRemoveRecipe, removeRecipe);
 
