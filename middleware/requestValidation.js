@@ -44,6 +44,6 @@ module.exports.validateAddRecipe = celebrate({
 
 module.exports.validateRemoveRecipe = celebrate({
   params: Joi.object().keys({
-    recipeId: Joi.number(),
+    recipeId: [Joi.number(), Joi.string()],
   }),
 });
