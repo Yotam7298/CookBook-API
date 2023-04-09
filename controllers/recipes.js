@@ -1,6 +1,11 @@
 const Recipe = require('../models/recipe');
 const { NotFoundError, UnauthorizedError } = require('../errors/errors');
-const { recipeNotFound, notAuthorized, recipeRemoved } = require('../messages');
+const {
+  recipeNotFound,
+  notAuthorized,
+  recipeUpdated,
+  recipeRemoved,
+} = require('../messages');
 
 module.exports.getSavedRecipes = (req, res, next) => {
   const owner = req.user._id;
@@ -51,6 +56,20 @@ module.exports.addRecipe = (req, res, next) => {
     owner,
   })
     .then((recipe) => res.status(201).send(recipe))
+    .catch(next);
+};
+
+module.exports.updateRecipe = (req, res, next) => {
+  const id = req.params.recipeId;
+  const update = req.body;
+
+  Recipe.updateOne({ _id: id }, update)
+    .then((recipe) => {
+      if (!recipe) {
+        return Promise.reject(new NotFoundError(recipeNotFound));
+      }
+    })
+    .then(() => res.send({ message: recipeUpdated }))
     .catch(next);
 };
 
