@@ -1,6 +1,6 @@
 // Success messages
-module.exports.recipeRemoved = 'Recipe removed successfully';
 module.exports.recipeUpdated = 'Recipe updated successfully';
+module.exports.recipeRemoved = 'Recipe removed successfully';
 
 // Error messages
 module.exports.notAuthorized = 'You are not authorized for that';
