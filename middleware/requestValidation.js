@@ -29,7 +29,7 @@ module.exports.validateAddRecipe = celebrate({
     title: Joi.string().required(),
     recipeId: Joi.number().integer(),
     image: Joi.string().custom(validateURL),
-    time: Joi.string().required(),
+    time: Joi.number().required(),
     source: Joi.string().required(),
     servings: Joi.number(),
     dairyFree: Joi.bool(),
