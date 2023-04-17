@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {
-  validateAddRecipe,
+  validateRecipe,
   validateRemoveRecipe,
 } = require('../middleware/requestValidation');
 
@@ -14,8 +14,8 @@ const {
 
 router.get('/saved', getSavedRecipes);
 router.get('/my', getMyRecipes);
-router.post('/', validateAddRecipe, addRecipe);
-router.patch('/:recipeId', updateRecipe);
+router.post('/', validateRecipe, addRecipe);
+router.patch('/:recipeId', validateRecipe, updateRecipe);
 router.delete('/:recipeId', validateRemoveRecipe, removeRecipe);
 
 module.exports = router;

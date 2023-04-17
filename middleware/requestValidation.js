@@ -24,7 +24,7 @@ module.exports.validateSignIn = celebrate({
   }),
 });
 
-module.exports.validateAddRecipe = celebrate({
+module.exports.validateRecipe = celebrate({
   body: Joi.object().keys({
     title: Joi.string().required(),
     recipeId: Joi.number().integer(),
@@ -45,5 +45,13 @@ module.exports.validateAddRecipe = celebrate({
 module.exports.validateRemoveRecipe = celebrate({
   params: Joi.object().keys({
     recipeId: [Joi.number(), Joi.string()],
+  }),
+});
+
+module.exports.validateFeedback = celebrate({
+  body: Joi.object().keys({
+    email: Joi.string().required().email(),
+    title: Joi.string().required(),
+    text: Joi.string().required(),
   }),
 });
